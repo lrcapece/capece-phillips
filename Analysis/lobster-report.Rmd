@@ -10,3 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+## Lobster size by region from 2019-2021
+
+Lobsters are largest at sites CARP, IVEE, and NAPL. 
+
+![Figure 1: Counts of lobster sizes at LTER sites.](../figs/lobster_size_site.png)
+
