@@ -9,3 +9,19 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+```
+
+
+
+```{r}
+
+lobster_abundance <- read_csv("../data/Lobster_Abundance_All_Years_20220829.csv")
+
+```
+
