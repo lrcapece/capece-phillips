@@ -15,4 +15,5 @@ knitr::opts_chunk$set(echo = TRUE)
 Lobsters are largest at sites CARP, IVEE, and NAPL. 
 
 ![Figure 1: Counts of lobster sizes at LTER sites.](../figs/lobster_size_site.png)
+![Figure 2: Fishing Pressure](../figs/beautiful_alex_plot.png)
 

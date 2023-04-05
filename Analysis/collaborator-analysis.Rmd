@@ -28,5 +28,91 @@ lobster_traps <- read_csv("../data/Lobster_Trap_Counts_All_Years_20210519.csv")
 
 ```
 
+Remove N/As in data
+```{r remove na's}
+
+lobster_traps <- lobster_traps %>% 
+  mutate(TRAPS = na_if(TRAPS, -99999))
+
+unique(lobster_traps$TRAPS)
+
+```
+
+## ggplot time
+
+Lobster traps by year
+
+```{r group by year}
+
+ggplot(lobster_traps,
+       aes(x=TRAPS))+
+  geom_histogram()+
+  facet_wrap(~YEAR)
+
+```
+
+
+```{r group by site and year, message=FALSE}
+
+lobsters_traps_summarise <- lobster_traps %>% 
+  group_by(SITE, YEAR) %>% 
+  summarise(TOTAL_TRAPS = sum(TRAPS, na.rm = TRUE))
+
+```
+
+Question 8
+
+```{r line plot}
+
+ggplot(lobsters_traps_summarise,
+       aes(x=YEAR, 
+           y=TOTAL_TRAPS,
+           color=SITE))+
+  geom_line()+
+  geom_point()
+
+```
+
+Question 9 
+
+```{r data subset fishing pressure}
+
+lobster_traps_fishing_pressure <- lobster_traps %>% 
+  filter(YEAR %in% c(2019, 2020, 2021)) %>% 
+  mutate(FISHING_PRESSURE = if_else(TRAPS >= 8,
+                                    true = "high",
+                                    false = "low")) %>% 
+  group_by(SITE, FISHING_PRESSURE) %>% 
+  summarize(COUNT = n()) %>% 
+  drop_na()
+
+```
+
+Now we will graph it... 
+
+```{r bar graph time}
+
+ggplot(lobster_traps_fishing_pressure,
+       aes(x=SITE,
+           y=COUNT,
+           fill=FISHING_PRESSURE,
+           color=FISHING_PRESSURE))+
+  geom_col(alpha = 0.8)+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 45,
+                                   hjust = 0.5,
+                                   vjust = 0.5),
+        legend.position = c(.05, .95),
+        legend.justification = c("left", "top"),
+        legend.box.just = "left",
+        legend.margin = margin(6, 6, 6, 6),
+        panel.grid = element_blank(),
+        panel.border = element_rect(size=1))+
+  labs(x= "Site", y= "Number of Fish Caught", fill= "Fishing Pressure")+
+  scale_fill_manual(values = c("#219ebc","#023047"))+
+  scale_color_manual(values = c("#219ebc","#023047"))+
+  guides(color= FALSE)
+```
+
 
 
