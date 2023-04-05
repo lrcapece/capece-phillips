@@ -1,6 +1,6 @@
 ---
 title: "Owner Analysis"
-author: "Alex Phillips"
+author: "Lena Capecee"
 date: "2023-04-05"
 output: html_document
 ---
@@ -17,11 +17,18 @@ library(tidyr)
 
 ```
 
-
+## read in data
 
 ```{r}
 
 lobster_abundance <- read_csv("../data/Lobster_Abundance_All_Years_20220829.csv")
+
+```
+## convert data
+
+```{r}
+lobster_abundance <- lobster_abundance %>% 
+    mutate(SIZE_MM = na_if(SIZE_MM, -99999))
 
 ```
 
