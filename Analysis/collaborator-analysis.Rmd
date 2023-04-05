@@ -9,4 +9,24 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Exercise: Explore, Clean, and Wrangle Data
+
+Load Libraries
+```{r Libraries, message=FALSE, error=FALSE}
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+```
+
+Read in the data
+```{r read in data, message=FALSE}
+
+lobster_traps <- read_csv("../data/Lobster_Trap_Counts_All_Years_20210519.csv")
+
+```
+
+
 
