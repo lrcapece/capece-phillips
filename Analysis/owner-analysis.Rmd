@@ -72,8 +72,10 @@ lobster_size_lrg <- lobster_abundance %>%
 unique(lobster_size_lrg$SIZE_BIN)
   
 
-ggplot(data=lobster_size_lrg, aes(x=SITE, y=COUNT, fill=SIZE_BIN)) +
+lobster_size_site<-ggplot(data=lobster_size_lrg, aes(x=SITE, y=COUNT, fill=SIZE_BIN)) +
   geom_col(position="dodge")
+
+ggsave("../figs/lobster_size_site.png", lobster_size_site)
 
 ```
 
