@@ -92,7 +92,7 @@ Now we will graph it...
 
 ```{r bar graph time}
 
-ggplot(lobster_traps_fishing_pressure,
+beautiful_alex_plot <- ggplot(lobster_traps_fishing_pressure,
        aes(x=SITE,
            y=COUNT,
            fill=FISHING_PRESSURE,
@@ -112,6 +112,10 @@ ggplot(lobster_traps_fishing_pressure,
   scale_fill_manual(values = c("#219ebc","#023047"))+
   scale_color_manual(values = c("#219ebc","#023047"))+
   guides(color= FALSE)
+
+beautiful_alex_plot
+
+ggsave("../figs/beautiful_alex_plot.png",beautiful_alex_plot)
 ```
 
 
